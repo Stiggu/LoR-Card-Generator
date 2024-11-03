@@ -1,0 +1,14 @@
+{
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "always"
+    },
+    "eslint.validate": ["javascript"],
+    "files.exclude": {
+      "**/*.js": true
+    },
+    "editor.formatOnSave": true,
+    "[markdown]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}
+  
