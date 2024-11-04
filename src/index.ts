@@ -1,11 +1,11 @@
 import { CardDefinition } from "./domain/cardDefinition.js";
 import { CardEditor } from "./domain/cardEditor.js";
-import { Colors, red } from "./utils/utils.js";
+import { Colors, Filters } from "./utils/utils.js";
 
 // Example card for now, will be replaced with CLI inputs!
 const definition: CardDefinition = {
-    color: Colors.RYOSHU,
-    filter: red,
+    color: Colors.RED,
+    filter: Filters.RED,
     image: "./src/assets/ryoshu.jpg",
     name: "S.T.A.B",
     cost: 1,

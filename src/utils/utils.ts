@@ -10,11 +10,12 @@ export const isRGBcolor = (color: unknown): color is Color => {
 
 export const hexToRgb = (hex: string): Color => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
-    } : {r:0,g:0,b:0};
+    
+    return {
+      r: parseInt(result?.[1] ?? "00", 16),
+      g: parseInt(result?.[2] ?? "00", 16),
+      b: parseInt(result?.[3] ?? "00", 16)
+    }
 }
 
 export const Colors = {
@@ -22,23 +23,23 @@ export const Colors = {
   GREEN: hexToRgb('#2ccb4f'),
   BLUE: hexToRgb('#e1be35'),
   YELLOW: hexToRgb('#ffad00'),
-  RYOSHU: hexToRgb('#b00000'),
+  RED: hexToRgb('#b00000'),
 }
 
-export const yellow = {
-  hue: 335,
-  saturate: 100,
-  darken: 10
-}
-
-export const green = {
-  hue: 60,
-  saturate: 100,
-  darken: 5
-}
-
-export const red = {
-  hue: 300,
-  saturate: 100,
-  darken: 5
+export const Filters = {
+  YELLOW: {
+    hue: 335,
+    saturate: 100,
+    darken: 10
+  },
+  GREEN: {
+    hue: 60,
+    saturate: 100,
+    darken: 5
+  },
+  RED: {
+    hue: 300,
+    saturate: 100,
+    darken: 5
+  }
 }

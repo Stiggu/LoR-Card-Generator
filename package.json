@@ -6,9 +6,9 @@
   "scripts": {
     "run:dev": "nodemon --exec node --loader ts-node/esm ./src/index.ts"
   },
-  "author": "",
+  "author": "Stiggu",
   "license": "ISC",
-  "description": "",
+  "description": "Library of Ruina Card Generator",
   "dependencies": {
     "@jimp/plugin-print": "^0.17.3",
     "chalk": "^5.3.0",

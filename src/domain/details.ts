@@ -3,14 +3,11 @@ import { Image, MergeParameters } from "./cardDefinition.js";
 
 const DIRT = './src/assets/cards/card_image_borders.png'
 
-export default class Dirt implements Image {
+export default class Details implements Image {
     buffer?: Buffer;
     merge: MergeParameters = {
         x: 20,
         y: 145
-    }
-
-    constructor() {
     }
 
     create = async () => {
