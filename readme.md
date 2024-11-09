@@ -13,13 +13,14 @@ Small library to generate cards as if they were from Library of Ruina.
 
 The CLI is accessed by using `lor-card` in the terminal. You have to pass in the following options:
 
-| Option  | Accepts                             | Description                                                                  | Example              |
-| ------- | ----------------------------------- | ---------------------------------------------------------------------------- | -------------------- |
-| image   | string                              | Path to the image.                                                           | ./images/kroomer.jpg |
-| cost    | number                              | The cost of the card.                                                        | 3                    |
-| attacks | string                              | The attack slots in the bottom of the card, can be separated by a slash (/). | slash/pierce         |
-| name    | string                              | The name or title of the card.                                               | Bonk                 |
-| type    | [CardType](./src/docs/CardTypes.md) | The type of the card based on Library of Ruina combat pages.                 | limited              |
+| Option  | Accepts                                  | Description                                                                         | Example                                     |
+| ------- | ---------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------- |
+| image   | string                                   | Path to the image.                                                                  | ./images/kroomer.jpg                        |
+| cost    | number                                   | The cost of the card.                                                               | 3                                           |
+| attacks | `slash` `blunt` `pierce` `evade` `block` | The attack slots in the bottom of the card, can be separated by a slash (/). Max 5. | `blunt` `blunt/blunt` `pierce/blunt/pierce` |
+| name    | string                                   | The name or title of the card.                                                      | Bonk                                        |
+| type    | [CardType](./src/docs/CardTypes.md)      | The type of the card based on Library of Ruina combat pages.                        | limited                                     |
+| range   | `melee` `range` `mass`                   | The type of range of the card, included mass attacks.                               |                                             |
 
 Example command:
 
