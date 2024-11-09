@@ -3,7 +3,7 @@ import { Jimp } from "jimp";
 import { CardDefinition, CardType, Image, ImageFilters, MergeParameters } from "./cardDefinition.js";
 import { Color } from "../utils/utils.js";
 
-const ATTACK_TYPE = './src/assets/cards/icons/'
+const ATTACK_TYPE = './src/assets/cards/types/'
 
 export default class AttackType implements Image {
     color: Color
@@ -25,31 +25,36 @@ export default class AttackType implements Image {
 
     create = async () => {
         const base = await sharp(`${ATTACK_TYPE}${this.attack}.png`)
-    .modulate({
-        brightness: .9
-    })
-    .resize(120, 120, {
-        fit: 'contain'
-    })
-    .toBuffer()
+            .modulate({
+                brightness: .9
+            })
+            .resize(120, 120, {
+                fit: 'contain'
+            })
+            .toBuffer()
 
-    const type = await Jimp.read(base)
-    this.buffer = await type
-        .sepia()
-        .color([
-            {
-                apply: 'hue',
-                params: [this.filter.hue]
-            },
-            {
-                apply: "saturate",
-                params: [this.filter.saturate] 
-            },
-            {
-                apply: "darken",
-                params: [this.filter.darken]
-            }
-        ])
-        .getBuffer("image/png")
+        const type = await Jimp.read(base)
+        type
+            .sepia()
+            .color([
+                {
+                    apply: 'hue',
+                    params: [this.filter.hue]
+                },
+                {
+                    apply: "saturate",
+                    params: [this.filter.saturate] 
+                },
+                {
+                    apply: "darken",
+                    params: [this.filter.darken]
+                }
+            ])
+
+        if(this.attack === "mass") {
+            type.rotate(-9)
+        }
+
+        this.buffer = await type.getBuffer("image/png")
     }
 }

@@ -7,7 +7,7 @@ export interface ImageFilters {
     darken: number
 }
 
-export type CardType = "melee" | "ranged"
+export type CardType = "melee" | "range" | "mass"
 
 export type AttackType = {name: "slash" | "blunt" | "pierce"}
 
@@ -38,13 +38,13 @@ export interface Image {
 }
 
 export const buildCardDefinition = (input: Record<string, string | undefined>): CardDefinition => {
-    const {attacks, cost, name, type, image = "./src/assets/ryoshu.jpg"} = input
+    const {attacks, cost, name, range, type, image = "./src/assets/ryoshu.jpg"} = input
 
     if(typeof attacks !== "string")
         throw new Error("[attacks] has to be passed in the format: x/y/z")
     
-    if(typeof cost !== "string")
-        throw new Error("[cost] has to be passed and a number!")
+    if(typeof cost !== "string" || isNaN(parseInt(cost)))
+        throw new Error("[cost] has to be passed in and a number!")
     
     if(typeof type !== "string")
         throw new Error("[type] has to be passed in!")
@@ -58,6 +58,7 @@ export const buildCardDefinition = (input: Record<string, string | undefined>): 
         image,
         name,
         cost: parseInt(cost),
+        attack: range as CardType,
         attacks: attacks.split('/').map(attack => {return {name: attack}}) as AttackType[]
     }
 }
