@@ -4,6 +4,12 @@ export interface Color {
   b: number
 }
 
+export interface Filter {
+    hue: number,
+    saturate: number,
+    darken: number
+}
+
 export const isRGBcolor = (color: unknown): color is Color => {
   return (color as Color).r !== undefined
 }
@@ -18,7 +24,7 @@ export const hexToRgb = (hex: string): Color => {
     }
 }
 
-export const Colors = {
+export const Colors: Record<string, Color> = {
   PAPERBACK: hexToRgb('#2ccb4f'),
   HARDCOVER: hexToRgb('#3D82B8'),
   LIMITED: hexToRgb('#ce6afb'),
@@ -26,7 +32,7 @@ export const Colors = {
   RED: hexToRgb('#b00000'),
 }
 
-export const Filters = {
+export const Filters: Record<string, Filter> = {
   PAPERBACK: {
     hue: 60,
     saturate: 100,

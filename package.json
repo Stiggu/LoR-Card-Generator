@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "run:dev": "nodemon --exec node --loader ts-node/esm ./src/index.ts"
+    "run:dev": "node --loader ts-node/esm ./src/index.ts --cost 5 --type limited --name Test"
   },
   "author": "Stiggu",
   "license": "ISC",
