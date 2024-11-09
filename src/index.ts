@@ -4,8 +4,8 @@ import { Colors, Filters } from "./utils/utils.js";
 
 // Example card for now, will be replaced with CLI inputs!
 const definition: CardDefinition = {
-    color: Colors.RED,
-    filter: Filters.RED,
+    color: Colors.OBJETDART,
+    filter: Filters.OBJETDART,
     image: "./src/assets/ryoshu.jpg",
     name: "S.T.A.B",
     cost: 1,
