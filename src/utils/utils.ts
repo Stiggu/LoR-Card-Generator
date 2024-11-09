@@ -19,27 +19,37 @@ export const hexToRgb = (hex: string): Color => {
 }
 
 export const Colors = {
-  PINK: hexToRgb('#ce6afb'),
-  GREEN: hexToRgb('#2ccb4f'),
-  BLUE: hexToRgb('#e1be35'),
-  YELLOW: hexToRgb('#ffad00'),
+  PAPERBACK: hexToRgb('#2ccb4f'),
+  HARDCOVER: hexToRgb('#3D82B8'),
+  LIMITED: hexToRgb('#ce6afb'),
+  OBJETDART: hexToRgb('#ffad00'),
   RED: hexToRgb('#b00000'),
 }
 
 export const Filters = {
-  YELLOW: {
-    hue: 335,
-    saturate: 100,
-    darken: 10
-  },
-  GREEN: {
+  PAPERBACK: {
     hue: 60,
     saturate: 100,
     darken: 5
+  },
+  HARDCOVER: {
+    hue: 140,
+    saturate: 100,
+    darken: 5
+  },
+  LIMITED: {
+    hue: 280,
+    saturate: 100,
+    darken: 5
+  },
+  OBJETDART: {
+    hue: 335,
+    saturate: 100,
+    darken: 10
   },
   RED: {
     hue: 300,
     saturate: 100,
     darken: 5
-  }
+  },
 }
