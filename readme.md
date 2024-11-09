@@ -1,10 +1,31 @@
-Currently in Development, at some point will be published!
+Currently in Development, it is not published at the moment!
 
 # Library of Ruina Card Generator
 
 Small library to generate cards as if they were from Library of Ruina.
 
-### Examples
+## How to use
+
+- Get NodeJs.
+- After creating a folder, run in a terminal.
+  - `npm i lor-card-generator`
+- Now you can use the CLI to generate cards!
+
+The CLI is accessed by using `lor-card` in the terminal. You have to pass in the following options:
+
+| Option  | Accepts                             | Description                                                                  | Example              |
+| ------- | ----------------------------------- | ---------------------------------------------------------------------------- | -------------------- |
+| image   | string                              | Path to the image.                                                           | ./images/kroomer.jpg |
+| cost    | number                              | The cost of the card.                                                        | 3                    |
+| attacks | string                              | The attack slots in the bottom of the card, can be separated by a slash (/). | slash/pierce         |
+| name    | string                              | The name or title of the card.                                               | Bonk                 |
+| type    | [CardType](./src/docs/CardTypes.md) | The type of the card based on Library of Ruina combat pages.                 | limited              |
+
+Example command:
+
+- `npx lor-card --image path/to/image.png --cost 1 --attacks blunt/slash/blunt --name TestCard --type limited`
+
+## Examples
 
 | Ryoshu                                 | Ishmael                                   |
 | -------------------------------------- | ----------------------------------------- |
@@ -14,9 +35,6 @@ Small library to generate cards as if they were from Library of Ruina.
 
 - Add missing card types (Special)
 - Add missing attack types (Counter die)
-- Add missing combat pages
-- Map all pages (So they can be generated easily/as defaults)
-- Add CLI usage (Alongside using classes from the package)
 - Refactor + Clean up
 - Error handling / Messages about the generation
 - Version bump (1.0.0)
@@ -26,4 +44,6 @@ Small library to generate cards as if they were from Library of Ruina.
 - Work on the right side of the page (Skill effects / damage)
 - Lose less quality when rotating icons
 
-Big thanks to that one Google drive that has all the pictures. (Will look for it later!)
+### Special thanks
+
+- Lunartique07 & R.Anakova & CasualWatson for publishing a drive link with all the sprites from the game.
