@@ -2,10 +2,13 @@
   "name": "lor-card-creator",
   "version": "0.0.1",
   "main": "./dist/index.js",
+  "bin": {
+    "lor-card":"./dist/index.js"
+  },
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "run:dev": "node --loader ts-node/esm ./src/index.ts --cost 5 --type limited --name Test"
+    "generate": "node --loader ts-node/esm ./src/index.ts --cost 5 --type limited --name Test --attacks slash/slash"
   },
   "author": "Stiggu",
   "license": "ISC",

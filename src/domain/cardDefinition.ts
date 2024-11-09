@@ -38,16 +38,19 @@ export interface Image {
 }
 
 export const buildCardDefinition = (input: Record<string, string | undefined>): CardDefinition => {
-    const {cost, name, type, image = "./src/assets/ryoshu.jpg"} = input
+    const {attacks, cost, name, type, image = "./src/assets/ryoshu.jpg"} = input
+
+    if(typeof attacks !== "string")
+        throw new Error("[attacks] has to be passed in the format: x/y/z")
     
     if(typeof cost !== "string")
-        throw new Error("[cost] has to be passed in!")
+        throw new Error("[cost] has to be passed and a number!")
     
     if(typeof type !== "string")
         throw new Error("[type] has to be passed in!")
     
     if(!Object.keys(Colors).includes(type.toUpperCase()) && !Object.keys(Filters).includes(type.toUpperCase())) 
-        throw new Error("[type] is wrong!")
+        throw new Error("[type] is incorrect, refer to the docs!")
 
     return {
         color: Colors[type.toUpperCase()],
@@ -55,16 +58,6 @@ export const buildCardDefinition = (input: Record<string, string | undefined>): 
         image,
         name,
         cost: parseInt(cost),
-        attacks: [
-            {
-                name: "blunt"
-            },
-            {
-                name: "blunt"
-            },
-            {
-                name: "blunt"
-            },
-        ]
+        attacks: attacks.split('/').map(attack => {return {name: attack}}) as AttackType[]
     }
 }
