@@ -1,5 +1,6 @@
 import { BlendMode } from "jimp"
 import { Color, Colors, Filters } from "../utils/utils.js"
+import { ErrorMessage } from "../utils/errorHandler.js"
 
 export interface ImageFilters {
     hue: number
@@ -41,16 +42,16 @@ export const buildCardDefinition = (input: Record<string, string | undefined>): 
     const {attacks, cost, name, range, type, image = "./src/assets/ryoshu.jpg"} = input
 
     if(typeof attacks !== "string")
-        throw new Error("[attacks] has to be passed in the format: x/y/z")
+        throw new ErrorMessage("attacks", "Has to be passed in the format: x/y/z")
     
     if(typeof cost !== "string" || isNaN(parseInt(cost)))
-        throw new Error("[cost] has to be passed in and a number!")
+        throw new ErrorMessage("cost", "Has to be passed in and a number!")
     
     if(typeof type !== "string")
-        throw new Error("[type] has to be passed in!")
+        throw new ErrorMessage("type", "Has to be passed in!")
     
     if(!Object.keys(Colors).includes(type.toUpperCase()) && !Object.keys(Filters).includes(type.toUpperCase())) 
-        throw new Error("[type] is incorrect, refer to the docs!")
+        throw new ErrorMessage("type", "Is not correct!")
 
     const parsedAttacks = attacks.split('/').map(attack => {
         const isCounter = attack.includes('-')
