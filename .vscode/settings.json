@@ -4,7 +4,7 @@
     },
     "eslint.validate": ["javascript"],
     "files.exclude": {
-      "**/*.js": true
+      // "**/*.js": true
     },
     "editor.formatOnSave": true,
     "[markdown]": {
