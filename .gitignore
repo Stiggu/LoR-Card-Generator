@@ -1,3 +1,4 @@
 /dist/
 output.png
 node_modules
+*.tgz
