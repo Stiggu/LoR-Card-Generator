@@ -9,7 +9,7 @@ export interface ImageFilters {
 
 export type CardType = "melee" | "range" | "mass"
 
-export type AttackType = {name: "slash" | "blunt" | "pierce"}
+export type AttackType = {name: "slash" | "blunt" | "pierce" | "evade" | "block", counter?: boolean}
 
 export interface CardDefinition {
     attacks: AttackType[]
@@ -52,6 +52,13 @@ export const buildCardDefinition = (input: Record<string, string | undefined>): 
     if(!Object.keys(Colors).includes(type.toUpperCase()) && !Object.keys(Filters).includes(type.toUpperCase())) 
         throw new Error("[type] is incorrect, refer to the docs!")
 
+    const parsedAttacks = attacks.split('/').map(attack => {
+        const isCounter = attack.includes('-')
+        const attackName = isCounter ? attack.split('-')[1] : attack
+
+        return {name: attackName, counter: isCounter} as AttackType
+    })
+
     return {
         color: Colors[type.toUpperCase()],
         filter: Filters[type.toUpperCase()],
@@ -59,6 +66,6 @@ export const buildCardDefinition = (input: Record<string, string | undefined>): 
         name,
         cost: parseInt(cost),
         attack: range as CardType,
-        attacks: attacks.split('/').map(attack => {return {name: attack}}) as AttackType[]
+        attacks: parsedAttacks
     }
 }
