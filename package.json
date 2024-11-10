@@ -1,6 +1,10 @@
 {
   "name": "lor-card-creator",
   "version": "1.0.0",
+  "author": "Stiggu",
+  "license": "MIT",
+  "repository": "stiggu/LoR-Card-Generator",
+  "description": "Library of Ruina Card Generator",
   "main": "./dist/index.js",
   "bin": {
     "lor-card":"./dist/index.js"
@@ -8,17 +12,12 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "generate": "node --loader ts-node/esm ./src/index.ts --cost 5 --type limited --name Test --attacks slash/slash/counter-slash --range mass"
+    "generate": "node --loader ts-node/esm ./src/index.ts --cost 5 --type red --name Test --attacks slash/slash/counter-slash/counter-block --range mass"
   },
-  "author": "Stiggu",
-  "license": "ISC",
-  "description": "Library of Ruina Card Generator",
   "dependencies": {
-    "@jimp/plugin-print": "^0.17.3",
     "chalk": "^5.3.0",
     "commander": "^12.1.0",
     "jimp": "^1.6.0",
-    "nodemon": "^3.1.7",
     "sharp": "^0.33.5"
   },
   "devDependencies": {
@@ -29,5 +28,9 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.7.0"
-  }
+  },
+  "keywords": [
+    "library-of-ruina",
+    "project-moon"
+  ]
 }
