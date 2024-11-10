@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "generate": "node --loader ts-node/esm ./src/index.ts --cost 5 --type limited --name Test --attacks slash/slash --range mass"
+    "generate": "node --loader ts-node/esm ./src/index.ts --cost 5 --type limited --name Test --attacks slash/slash/counter-slash --range mass"
   },
   "author": "Stiggu",
   "license": "ISC",
