@@ -1,7 +1,7 @@
 import sharp from "sharp";
 import { MergeParameters, CardDefinition, Image, AttackType } from "./cardDefinition.js";
 import { Jimp } from "jimp";
-import chalk from "chalk";
+import { ErrorMessage } from "../utils/errorHandler.js";
 
 const ATTACK = './src/assets/icons/'
 
@@ -15,7 +15,8 @@ export default class AttackIcon implements Image {
 
     constructor({attacks}: CardDefinition) {
         if(attacks.length > 5)
-            throw new Error(chalk.red("Cards can only have 5 attack skills"))
+            throw new ErrorMessage("attacks", "Cards can only have 5 attack skills")
+
         this.attacks = attacks
         this.merge.x -= (60 * this.attacks.length) / 2
     }
