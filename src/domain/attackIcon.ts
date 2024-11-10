@@ -28,7 +28,8 @@ export default class AttackIcon implements Image {
         })
 
         for(const attack of this.attacks) {
-            const icon = await sharp(`${ATTACK}${attack.name}.png`)
+            const imagePath = attack.counter ? `counter-${attack.name}.png` : `${attack.name}.png`
+            const icon = await sharp(ATTACK + imagePath)
             .resize(80, 80)
             .modulate({
                 // lightness: 1000
