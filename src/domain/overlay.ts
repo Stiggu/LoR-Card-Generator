@@ -1,8 +1,8 @@
 import { BlendMode, Jimp } from "jimp"
 import { Color } from "../utils/utils.js"
 import { CardDefinition, Image } from "./cardDefinition.js"
+import { CARD_OVERLAY } from "../utils/paths.js"
 
-const CARD_OVERLAY = './src/assets/cards/card_overlay.png'
 
 export class Overlay implements Image {
     color: Color

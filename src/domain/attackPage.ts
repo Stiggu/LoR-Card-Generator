@@ -1,7 +1,7 @@
 import sharp from "sharp";
 import { CardDefinition, Image, MergeParameters } from "./cardDefinition.js";
+import { MASK } from "../utils/paths.js";
 
-const MASK = './src/assets/cards/testclip.png'
 
 export class AttackPage implements Image {
     image: string
