@@ -1,6 +1,6 @@
 {
   "name": "lor-card-creator",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "./dist/index.js",
   "bin": {
     "lor-card":"./dist/index.js"
