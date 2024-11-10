@@ -13,12 +13,12 @@ The CLI is accessed by using `lor-card` in the terminal. You have to pass in the
 
 | Option  | Accepts                                                                                                                   | Description                                                                         | Example                                             |
 | ------- | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------- |
-| image   | string                                                                                                                    | Path to the image.                                                                  | `./images/krooming.jpg`                             |
-| cost    | `number` `0-9`                                                                                                            | The cost of the card.                                                               | 3                                                   |
+| image   | `string`                                                                                                                  | Path to the image.                                                                  | `./images/krooming.jpg`                             |
+| cost    | `number` `0-9`                                                                                                            | The cost of the card.                                                               | `3`                                                 |
 | attacks | `slash` `blunt` `pierce` `evade` `block` `counter-slash` `counter-blunt` `counter-pierce` `counter-evade` `counter-block` | The attack slots in the bottom of the card, can be separated by a slash (/). Max 5. | `blunt` `blunt/blunt` `pierce/counter-blunt/pierce` |
-| name    | string                                                                                                                    | The name or title of the card.                                                      | Bonk                                                |
-| type    | [CardType](./src/docs/CardTypes.md)                                                                                       | The type of the card based on Library of Ruina combat pages.                        | limited                                             |
-| range   | `melee` `range` `mass`                                                                                                    | The type of range of the card, included mass attacks.                               | melee                                               |
+| name    | `string`                                                                                                                  | The name or title of the card.                                                      | `Bonk`                                              |
+| type    | [CardType](./src/docs/CardTypes.md)                                                                                       | The type of the card based on Library of Ruina combat pages.                        | `limited`                                           |
+| range   | `melee` `range` `mass`                                                                                                    | The type of range of the card, included mass attacks.                               | `melee`                                             |
 
 Example command:
 
@@ -26,9 +26,9 @@ Example command:
 
 ## Examples
 
-| Ryoshu                                 | Ishmael                                   |
-| -------------------------------------- | ----------------------------------------- |
-| ![](./src//assets/examples/ryoshu.png) | ![](./src//assets/examples/sloshmael.png) |
+| Ryoshu                             | Ishmael                               |
+| ---------------------------------- | ------------------------------------- |
+| ![](.//assets/examples/ryoshu.png) | ![](.//assets/examples/sloshmael.png) |
 
 ### Working on
 
