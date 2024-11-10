@@ -3,13 +3,19 @@
   "version": "1.0.0",
   "author": "Stiggu",
   "license": "MIT",
-  "repository": "stiggu/LoR-Card-Generator",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stiggu/LoR-Card-Generator.git"
+  },
   "description": "Library of Ruina Card Generator",
   "main": "./dist/index.js",
   "bin": {
-    "lor-card":"./dist/index.js"
+    "lor-card": "dist/index.js"
   },
-  "files": ["./assets", "./dist"],
+  "files": [
+    "./assets",
+    "./dist"
+  ],
   "type": "module",
   "scripts": {
     "build": "tsc",
