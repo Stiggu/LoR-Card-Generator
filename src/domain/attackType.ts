@@ -2,8 +2,8 @@ import sharp from "sharp";
 import { Jimp } from "jimp";
 import { CardDefinition, CardType, Image, ImageFilters, MergeParameters } from "./cardDefinition.js";
 import { Color } from "../utils/utils.js";
+import { ATTACK_TYPE } from "../utils/paths.js";
 
-const ATTACK_TYPE = './src/assets/cards/types/'
 
 export default class AttackType implements Image {
     color: Color
@@ -24,7 +24,7 @@ export default class AttackType implements Image {
     }
 
     create = async () => {
-        const base = await sharp(`${ATTACK_TYPE}${this.attack}.png`)
+        const base = await sharp(`${ATTACK_TYPE}/${this.attack}.png`)
             .modulate({
                 brightness: .9
             })

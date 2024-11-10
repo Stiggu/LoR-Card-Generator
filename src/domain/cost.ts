@@ -2,8 +2,8 @@ import sharp from "sharp";
 import { Jimp } from "jimp";
 import { ImageFilters, MergeParameters, CardDefinition, Image } from "./cardDefinition.js";
 import { Color } from "../utils/utils.js";
+import { PATH } from "../utils/paths.js";
 
-const PATH = './src/assets/cards/icons/'
 
 export default class Cost implements Image {
     color: Color
@@ -24,7 +24,7 @@ export default class Cost implements Image {
     }
 
     create = async () => {
-        const base = await sharp(`${PATH}${this.cost}.png`)
+        const base = await sharp(`${PATH}/${this.cost}.png`)
         .modulate({
             brightness: .75
         })

@@ -1,7 +1,7 @@
 import sharp from "sharp";
 import { Image, MergeParameters } from "./cardDefinition.js";
+import { DIRT } from "../utils/paths.js";
 
-const DIRT = './src/assets/cards/card_image_borders.png'
 
 export default class Details implements Image {
     buffer?: Buffer;

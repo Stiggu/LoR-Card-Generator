@@ -1,6 +1,7 @@
 import { BlendMode } from "jimp"
 import { Color, Colors, Filters } from "../utils/utils.js"
 import { ErrorMessage } from "../utils/errorHandler.js"
+import { DEFAULT_IMAGE } from "../utils/paths.js"
 
 export interface ImageFilters {
     hue: number
@@ -39,7 +40,7 @@ export interface Image {
 }
 
 export const buildCardDefinition = (input: Record<string, string | undefined>): CardDefinition => {
-    const {attacks, cost, name, range, type, image = "./src/assets/ryoshu.jpg"} = input
+    const {attacks, cost, name, range, type, image = DEFAULT_IMAGE} = input
 
     if(typeof attacks !== "string")
         throw new ErrorMessage("attacks", "Has to be passed in the format: x/y/z")

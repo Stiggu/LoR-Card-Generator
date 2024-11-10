@@ -2,8 +2,8 @@ import sharp from "sharp";
 import { MergeParameters, CardDefinition, Image, AttackType } from "./cardDefinition.js";
 import { Jimp } from "jimp";
 import { ErrorMessage } from "../utils/errorHandler.js";
+import { ATTACK } from "../utils/paths.js";
 
-const ATTACK = './src/assets/icons/'
 
 export default class AttackIcon implements Image {
     attacks: AttackType[]
@@ -30,7 +30,7 @@ export default class AttackIcon implements Image {
 
         for(const attack of this.attacks) {
             const imagePath = attack.counter ? `counter-${attack.name}.png` : `${attack.name}.png`
-            const icon = await sharp(ATTACK + imagePath)
+            const icon = await sharp(`${ATTACK}/${imagePath}`)
             .resize(80, 80)
             .modulate({
                 // lightness: 1000

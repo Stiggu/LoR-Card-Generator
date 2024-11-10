@@ -1,5 +1,6 @@
 import { Jimp, loadFont, measureText, ResizeStrategy } from "jimp";
 import { CardDefinition, Image, MergeParameters } from "./cardDefinition.js";
+import { DEFAULT_FONT } from "../utils/paths.js";
 
 export default class Name implements Image {
     buffer?: Buffer;
@@ -19,7 +20,7 @@ export default class Name implements Image {
             height: 50,
             // color: "red"
         })
-        const font = await loadFont('./src/assets/fonts/converted/test.fnt')
+        const font = await loadFont(DEFAULT_FONT)
         const getTextPosition = () => {
             return text.bitmap.width/2 - measureText(font, this.title)/2
         }

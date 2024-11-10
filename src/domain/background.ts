@@ -1,8 +1,8 @@
 import { CardDefinition, Image, ImageFilters } from "./cardDefinition.js";
 import sharp from "sharp"
 import { Jimp } from "jimp"
+import { BASE_CARD_IMAGE } from "../utils/paths.js";
 
-const BASE_CARD_IMAGE = './src/assets/cards/card.png'
 
 export class Background implements Image {
     filter: ImageFilters

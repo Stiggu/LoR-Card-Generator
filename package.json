@@ -9,7 +9,7 @@
   "bin": {
     "lor-card":"./dist/index.js"
   },
-  "files": ["./dist"],
+  "files": ["./assets", "./dist"],
   "type": "module",
   "scripts": {
     "build": "tsc",
