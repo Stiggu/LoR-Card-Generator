@@ -1,5 +1,3 @@
-Currently in Development, it is not published at the moment!
-
 # Library of Ruina Card Generator
 
 Small library to generate cards as if they were from Library of Ruina.
@@ -16,7 +14,7 @@ The CLI is accessed by using `lor-card` in the terminal. You have to pass in the
 | Option  | Accepts                                                                                                                   | Description                                                                         | Example                                             |
 | ------- | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------- |
 | image   | string                                                                                                                    | Path to the image.                                                                  | `./images/krooming.jpg`                             |
-| cost    | number                                                                                                                    | The cost of the card.                                                               | 3                                                   |
+| cost    | `number` `0-9`                                                                                                            | The cost of the card.                                                               | 3                                                   |
 | attacks | `slash` `blunt` `pierce` `evade` `block` `counter-slash` `counter-blunt` `counter-pierce` `counter-evade` `counter-block` | The attack slots in the bottom of the card, can be separated by a slash (/). Max 5. | `blunt` `blunt/blunt` `pierce/counter-blunt/pierce` |
 | name    | string                                                                                                                    | The name or title of the card.                                                      | Bonk                                                |
 | type    | [CardType](./src/docs/CardTypes.md)                                                                                       | The type of the card based on Library of Ruina combat pages.                        | limited                                             |
@@ -32,17 +30,12 @@ Example command:
 | -------------------------------------- | ----------------------------------------- |
 | ![](./src//assets/examples/ryoshu.png) | ![](./src//assets/examples/sloshmael.png) |
 
-### TODO Before publishing
+### Working on
 
-- Refactor + Clean up
-- Error handling / Messages about the generation
-- Version bump (1.0.0)
-
-### TODO after the TODO
-
-- Work on the right side of the page (Skill effects / damage)
-- Lose less quality when rotating icons
+- Ability to pass in a `.json` file and generate a card from it.
+- Skill Effects / Damage / Die rolls.
+- Lose less quality when rotating icons.
 
 ### Special thanks
 
-- Lunartique07 & R.Anakova & CasualWatson for publishing a drive link with all the sprites from the game.
+- Lunartique07, R.Anakova and CasualWatson for publishing a drive link with all the sprites from the game.
