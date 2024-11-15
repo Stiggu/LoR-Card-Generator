@@ -26,3 +26,5 @@ program
     .option('-t, --type <char>')
     .action(generate)
     .parse()
+
+export {CardEditor} from './domain/cardEditor.js'
