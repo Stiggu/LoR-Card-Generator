@@ -1,14 +1,19 @@
-export interface Color {
-  r: number,
-  g: number,
-  b: number
-}
+ 
+import { z } from "zod"
 
-export interface Filter {
-    hue: number,
-    saturate: number,
-    darken: number
-}
+export const colorSchema = z.object({
+  r: z.number(),
+  g: z.number(),
+  b: z.number()
+})
+export type Color = z.infer<typeof colorSchema>
+
+export const filterSchema = z.object({
+  hue: z.number(),
+  saturate: z.number(),
+  darken: z.number()
+})
+export type Filter = z.infer<typeof filterSchema>
 
 export const isRGBcolor = (color: unknown): color is Color => {
   return (color as Color).r !== undefined
@@ -24,7 +29,10 @@ export const hexToRgb = (hex: string): Color => {
     }
 }
 
-export const Colors: Record<string, Color> = {
+export const validColors = ["PAPERBACK", "HARDCOVER", "LIMITED", "OBJETDART", "RED"] as const
+export const colorsSchema = z.enum(validColors)
+export type ColorFilterMatch = z.infer<typeof colorsSchema>
+export const Colors: Record<ColorFilterMatch, Color> = {
   PAPERBACK: hexToRgb('#2ccb4f'),
   HARDCOVER: hexToRgb('#3D82B8'),
   LIMITED: hexToRgb('#ce6afb'),
@@ -32,7 +40,7 @@ export const Colors: Record<string, Color> = {
   RED: hexToRgb('#b00000'),
 }
 
-export const Filters: Record<string, Filter> = {
+export const Filters: Record<ColorFilterMatch, Filter> = {
   PAPERBACK: {
     hue: 60,
     saturate: 100,

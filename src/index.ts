@@ -1,12 +1,32 @@
 #!/usr/bin/env node
 
 import { program } from "commander";
-import { buildCardDefinition } from "./domain/cardDefinition.js";
+import { CardType, userInputSchema } from "./domain/cardDefinition.js";
 import { CardEditor } from "./domain/cardEditor.js";
+import { ErrorMessage } from "./utils/errorHandler.js";
+import { Colors, Filters } from "./utils/utils.js";
 
 const generate = async (option: Record<string, string|undefined>) => {
-    const definition = buildCardDefinition(option)
-    const cardEditor = new CardEditor(definition)
+    const result = userInputSchema.safeParse(option)
+
+    if(result.error){
+        console.table(result.error.issues)
+        throw new ErrorMessage('parser', 'The input provided is invalid, please review the table above!')
+    }
+
+    const {attacks, cost, name, range, type, image} = result.data
+
+    const cardDefinition = {
+        color: Colors[type],
+        filter: Filters[type],
+        image,
+        name,
+        cost: cost,
+        attack: range as CardType,
+        attacks: attacks
+    }
+    
+    const cardEditor = new CardEditor(cardDefinition)
     
     cardEditor.load()
     
