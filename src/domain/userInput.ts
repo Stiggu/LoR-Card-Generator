@@ -1,21 +1,19 @@
 import { z } from "zod"
-import { attacksSchema, AttackType } from "./attackType.js"
+import { attacksSchema } from "./attackType.js"
 import { ErrorMessage } from "./utils/errorHandler.js"
-import { ColorFilterMatch, validColors } from "./color.js"
+import { colorsSchema, validColors } from "./color.js"
 import { cardTypeSchema } from "./cardType.js"
 
 const convertAttackInputToType = (value: string) => value.split('/').map(attack => {
     const isCounter = attack.includes('-')
     const attackName = isCounter ? attack.split('-')[1] : attack
 
-    const result = attacksSchema.safeParse(attackName)
+    const {data, error} = attacksSchema.safeParse(attackName)
 
-    if(result.error){
-        console.table(result.error.issues)
+    if(error)
         throw new ErrorMessage('parser', 'Incorrect attack type!');
-    }
 
-    return {name: result.data, counter: isCounter} as AttackType
+    return {name: data, counter: isCounter}
 })
 
 const convertCostInput = (value: string) => {
@@ -32,6 +30,6 @@ export const userInputSchema = z.object({
     cost: z.string().transform(convertCostInput),
     name: z.string(),
     range: cardTypeSchema,
-    type: z.string().transform(value => value.toUpperCase() as ColorFilterMatch).refine(value => validColors.includes(value), { message: "Invalid colour"}),
+    type: z.string().transform(value => colorsSchema.parse(value.toUpperCase())).refine(value => validColors.includes(value), { message: "Invalid colour"}),
     image: z.string()
 })
