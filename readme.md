@@ -22,7 +22,7 @@ The CLI is accessed by using `lor-card` in the terminal. You have to pass in the
 
 Example command:
 
-- `npx lor-card --image path/to/image.png --cost 1 --attacks blunt/slash/blunt --name TestCard --type limited`
+- `lor-card --image ./path/to/image.png --cost 1 --attacks blunt/slash/blunt --name TestCard --type limited --range mass`
 
 ## Examples
 
