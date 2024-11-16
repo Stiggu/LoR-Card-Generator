@@ -1,7 +1,8 @@
+ 
 import { BlendMode } from "jimp"
-import { Color, Colors, Filters } from "../utils/utils.js"
+import { ColorFilterMatch, Colors, colorSchema, Filters, filterSchema, validColors } from "../utils/utils.js"
 import { ErrorMessage } from "../utils/errorHandler.js"
-import { DEFAULT_IMAGE } from "../utils/paths.js"
+import { z } from "zod"
 
 export interface ImageFilters {
     hue: number
@@ -9,20 +10,56 @@ export interface ImageFilters {
     darken: number
 }
 
-export type CardType = "melee" | "range" | "mass"
+const cardTypeSchema = z.enum(["melee", "range", "mass"])
+export type CardType = z.infer<typeof cardTypeSchema>
 
-export type AttackType = {name: "slash" | "blunt" | "pierce" | "evade" | "block", counter?: boolean}
+const attacksSchema = z.enum(["slash", "blunt", "pierce", "evade", "block"])
+const attackTypeSchema = z.object({
+    name: attacksSchema,
+    counter: z.optional(z.boolean())
+})
+export type AttackType = z.infer<typeof attackTypeSchema>
 
-export interface CardDefinition {
-    attacks: AttackType[]
-    color: Color
-    image: string
+export const cardDefinitionSchema = z.object({
+    attacks: z.array(attackTypeSchema),
+    color: colorSchema,
+    image: z.string(),
+    attack: z.optional(cardTypeSchema),
+    cost: z.optional(z.number()),
+    filter: filterSchema,
+    name: z.string()
+})
+export type CardDefinition = z.infer<typeof cardDefinitionSchema>
 
-    attack?: CardType
-    cost?: number
-    filter: ImageFilters
-    name?: string
-}
+const convertAttackInputToType = (value: string) => value.split('/').map(attack => {
+    const isCounter = attack.includes('-')
+    const attackName = isCounter ? attack.split('-')[1] : attack
+
+    const result = attacksSchema.safeParse(attackName)
+
+    if(result.error){
+        console.table(result.error.issues)
+        throw new ErrorMessage('parser', 'Incorrect attack type!');
+    }
+
+    return {name: result.data, counter: isCounter} as AttackType
+})
+
+export const userInputSchema = z.object({
+    attacks: z.string().transform(convertAttackInputToType),
+    cost: z.string().transform(value => {
+            const parsedNumber = parseInt(value)
+
+            if(isNaN(parsedNumber))
+                throw new ErrorMessage('parser', 'Cost should be a number!')
+
+            return parsedNumber
+    }),
+    name: z.string(),
+    range: cardTypeSchema,
+    type: z.string().transform(value => value.toUpperCase() as ColorFilterMatch).refine(value => validColors.includes(value), { message: "Invalid colour"}),
+    image: z.string()
+})
 
 export interface MergeParameters {
     x: number
@@ -37,37 +74,4 @@ export interface Image {
     buffer?: Buffer
     merge?: MergeParameters
     create: () => Promise<void>
-}
-
-export const buildCardDefinition = (input: Record<string, string | undefined>): CardDefinition => {
-    const {attacks, cost, name, range, type, image = DEFAULT_IMAGE} = input
-
-    if(typeof attacks !== "string")
-        throw new ErrorMessage("attacks", "Has to be passed in the format: x/y/z")
-    
-    if(typeof cost !== "string" || isNaN(parseInt(cost)))
-        throw new ErrorMessage("cost", "Has to be passed in and a number!")
-    
-    if(typeof type !== "string")
-        throw new ErrorMessage("type", "Has to be passed in!")
-    
-    if(!Object.keys(Colors).includes(type.toUpperCase()) && !Object.keys(Filters).includes(type.toUpperCase())) 
-        throw new ErrorMessage("type", "Is not correct!")
-
-    const parsedAttacks = attacks.split('/').map(attack => {
-        const isCounter = attack.includes('-')
-        const attackName = isCounter ? attack.split('-')[1] : attack
-
-        return {name: attackName, counter: isCounter} as AttackType
-    })
-
-    return {
-        color: Colors[type.toUpperCase()],
-        filter: Filters[type.toUpperCase()],
-        image,
-        name,
-        cost: parseInt(cost),
-        attack: range as CardType,
-        attacks: parsedAttacks
-    }
 }
