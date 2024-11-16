@@ -1,12 +1,12 @@
 import { Jimp } from "jimp"
 import chalk from "chalk"
-import { Image } from "../domain/cardDefinition.js"
+import { CardImage } from "../domain/cardImage.js"
 
-export class Card implements Image {
-    images: Image[] = []
+export class Card implements CardImage {
+    images: CardImage[] = []
     buffer?: Buffer
 
-    add = (image: Image) => {
+    add = (image: CardImage) => {
         this.images.push(image)    
     }
     

@@ -1,11 +1,13 @@
-import { CardDefinition, Image, ImageFilters } from "../domain/cardDefinition.js";
 import sharp from "sharp"
 import { Jimp } from "jimp"
 import { BASE_CARD_IMAGE } from "../domain/utils/paths.js";
+import { CardImage } from "../domain/cardImage.js";
+import { Filter } from "../domain/filter.js";
+import { CardDefinition } from "../domain/cardDefinition.js";
 
 
-export class Background implements Image {
-    filter: ImageFilters
+export class Background implements CardImage {
+    filter: Filter
     buffer?: Buffer
 
     constructor({filter}: CardDefinition) {

@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
 import { program } from "commander";
-import { CardType, userInputSchema } from "./domain/cardDefinition.js";
 import { CardEditor } from "./infrastructure/cardEditor.js";
 import { ErrorMessage } from "./domain/utils/errorHandler.js";
 import { Colors } from "./domain/color.js";
 import { Filters } from "./domain/filter.js";
+import { userInputSchema } from "./domain/userInput.js";
 
 const generate = async (option: Record<string, string|undefined>) => {
     const result = userInputSchema.safeParse(option)
@@ -23,7 +23,7 @@ const generate = async (option: Record<string, string|undefined>) => {
         image,
         name,
         cost: cost,
-        attack: range as CardType,
+        attack: range,
         attacks: attacks
     }
     

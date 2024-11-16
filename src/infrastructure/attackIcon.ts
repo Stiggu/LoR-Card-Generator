@@ -1,11 +1,14 @@
 import sharp from "sharp";
-import { MergeParameters, CardDefinition, Image, AttackType } from "../domain/cardDefinition.js";
 import { Jimp } from "jimp";
 import { ErrorMessage } from "../domain/utils/errorHandler.js";
 import { ATTACK } from "../domain/utils/paths.js";
+import { CardImage } from "../domain/cardImage.js";
+import { CardDefinition } from "../domain/cardDefinition.js";
+import { MergeParameters } from "../domain/mergeParameters.js";
+import { AttackType } from "../domain/attackType.js";
 
 
-export default class AttackIcon implements Image {
+export default class AttackIcon implements CardImage {
     attacks: AttackType[]
     buffer?: Buffer;
     merge: MergeParameters = {

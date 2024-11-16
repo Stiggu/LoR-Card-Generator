@@ -1,10 +1,12 @@
 import sharp from "sharp";
-import { CardDefinition, Image, MergeParameters } from "../domain/cardDefinition.js";
 import { MASK } from "../domain/utils/paths.js";
 import { ErrorMessage } from "../domain/utils/errorHandler.js";
+import { CardImage } from "../domain/cardImage.js";
+import { MergeParameters } from "../domain/mergeParameters.js";
+import { CardDefinition } from "../domain/cardDefinition.js";
 
 
-export class AttackPage implements Image {
+export class AttackPage implements CardImage {
     image: string
     buffer?: Buffer;
     merge: MergeParameters = {
