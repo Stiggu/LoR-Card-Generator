@@ -37,7 +37,7 @@ const generate = async (option: Record<string, string|undefined>) => {
 program
     .name('lor-card')
     .description('CLI to generate a Card that looks like from Library of Ruina')
-    .version('1.0.0')
+    .version('1.1.0')
     .option('-a, --attacks <char>')
     .option('-c, --cost <char>')
     .option('-i, --image <char>')
