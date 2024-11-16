@@ -18,17 +18,18 @@ const convertAttackInputToType = (value: string) => value.split('/').map(attack 
     return {name: result.data, counter: isCounter} as AttackType
 })
 
+const convertCostInput = (value: string) => {
+    const parsedNumber = parseInt(value)
+
+    if(isNaN(parsedNumber))
+        throw new ErrorMessage('parser', 'Cost should be a number!')
+
+    return parsedNumber
+}
 
 export const userInputSchema = z.object({
     attacks: z.string().transform(convertAttackInputToType),
-    cost: z.string().transform(value => {
-            const parsedNumber = parseInt(value)
-
-            if(isNaN(parsedNumber))
-                throw new ErrorMessage('parser', 'Cost should be a number!')
-
-            return parsedNumber
-    }),
+    cost: z.string().transform(convertCostInput),
     name: z.string(),
     range: cardTypeSchema,
     type: z.string().transform(value => value.toUpperCase() as ColorFilterMatch).refine(value => validColors.includes(value), { message: "Invalid colour"}),
