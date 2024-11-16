@@ -1,8 +1,8 @@
 import sharp from "sharp";
-import { MergeParameters, CardDefinition, Image, AttackType } from "./cardDefinition.js";
+import { MergeParameters, CardDefinition, Image, AttackType } from "../domain/cardDefinition.js";
 import { Jimp } from "jimp";
-import { ErrorMessage } from "../utils/errorHandler.js";
-import { ATTACK } from "../utils/paths.js";
+import { ErrorMessage } from "../domain/utils/errorHandler.js";
+import { ATTACK } from "../domain/utils/paths.js";
 
 
 export default class AttackIcon implements Image {

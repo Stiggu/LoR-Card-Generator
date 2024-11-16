@@ -1,7 +1,7 @@
 import { BlendMode, Jimp } from "jimp"
-import { Color } from "../utils/utils.js"
-import { CardDefinition, Image } from "./cardDefinition.js"
-import { CARD_OVERLAY } from "../utils/paths.js"
+import { Color } from "../domain/utils/utils.js"
+import { CardDefinition, Image } from "../domain/cardDefinition.js"
+import { CARD_OVERLAY } from "../domain/utils/paths.js"
 
 
 export class Overlay implements Image {

@@ -1,8 +1,8 @@
 import sharp from "sharp";
 import { Jimp } from "jimp";
-import { ImageFilters, MergeParameters, CardDefinition, Image } from "./cardDefinition.js";
-import { Color } from "../utils/utils.js";
-import { PATH } from "../utils/paths.js";
+import { ImageFilters, MergeParameters, CardDefinition, Image } from "../domain/cardDefinition.js";
+import { Color } from "../domain/utils/utils.js";
+import { PATH } from "../domain/utils/paths.js";
 
 
 export default class Cost implements Image {

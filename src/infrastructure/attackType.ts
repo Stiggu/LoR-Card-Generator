@@ -1,8 +1,8 @@
 import sharp from "sharp";
 import { Jimp } from "jimp";
-import { CardDefinition, CardType, Image, ImageFilters, MergeParameters } from "./cardDefinition.js";
-import { Color } from "../utils/utils.js";
-import { ATTACK_TYPE } from "../utils/paths.js";
+import { CardDefinition, CardType, Image, ImageFilters, MergeParameters } from "../domain/cardDefinition.js";
+import { Color } from "../domain/utils/utils.js";
+import { ATTACK_TYPE } from "../domain/utils/paths.js";
 
 
 export default class AttackType implements Image {
