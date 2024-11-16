@@ -1,6 +1,7 @@
 import sharp from "sharp";
 import { CardDefinition, Image, MergeParameters } from "./cardDefinition.js";
 import { MASK } from "../utils/paths.js";
+import { ErrorMessage } from "../utils/errorHandler.js";
 
 
 export class AttackPage implements Image {
@@ -18,11 +19,19 @@ export class AttackPage implements Image {
     create = async () => {
         const maskBuffer = sharp(MASK)
             .resize(420,350)
-    
-        const source = await sharp(this.image)
-            .png()
-            .resize(420,350)
-            .toBuffer()
+
+        let source: Buffer;
+
+        try {
+            source = await sharp(this.image)
+                .png()
+                .resize(420,350)
+                .toBuffer()
+        } catch(e) {
+            console.error(e);
+            throw new ErrorMessage('attack page', 'Cannot find the image provided!')
+        }
+        
     
         this.buffer = await sharp(source)
             .png()
