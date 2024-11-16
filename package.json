@@ -19,7 +19,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "generate": "node --loader ts-node/esm ./src/index.ts --cost 5 --type red --name Test --attacks slash/slash/counter-slash/counter-block --range mass"
+    "generate": "node --loader ts-node/esm ./src/index.ts --cost 5 --type red --name Test --attacks slash/slash/counter-slash/counter-block --range mass --image ./assets/ryoshu.png"
   },
   "dependencies": {
     "chalk": "^5.3.0",

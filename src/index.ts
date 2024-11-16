@@ -8,15 +8,14 @@ import { Filters } from "./domain/filter.js";
 import { userInputSchema } from "./domain/userInput.js";
 
 const generate = async (option: Record<string, string|undefined>) => {
-    const result = userInputSchema.safeParse(option)
+    const {data, error} = userInputSchema.safeParse(option)
 
-    if(result.error){
-        console.table(result.error.issues)
+    if(error){
+        console.table(error.issues)
         throw new ErrorMessage('parser', 'The input provided is invalid, please review the table above!')
     }
 
-    const {attacks, cost, name, range, type, image} = result.data
-
+    const {attacks, cost, name, range, type, image} = data
     const cardDefinition = {
         color: Colors[type],
         filter: Filters[type],
