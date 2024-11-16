@@ -1,6 +1,6 @@
 import sharp from "sharp";
-import { Image, MergeParameters } from "./cardDefinition.js";
-import { DIRT } from "../utils/paths.js";
+import { Image, MergeParameters } from "../domain/cardDefinition.js";
+import { DIRT } from "../domain/utils/paths.js";
 
 
 export default class Details implements Image {

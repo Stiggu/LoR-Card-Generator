@@ -2,9 +2,10 @@
 
 import { program } from "commander";
 import { CardType, userInputSchema } from "./domain/cardDefinition.js";
-import { CardEditor } from "./domain/cardEditor.js";
-import { ErrorMessage } from "./utils/errorHandler.js";
-import { Colors, Filters } from "./utils/utils.js";
+import { CardEditor } from "./infrastructure/cardEditor.js";
+import { ErrorMessage } from "./domain/utils/errorHandler.js";
+import { Colors } from "./domain/color.js";
+import { Filters } from "./domain/filter.js";
 
 const generate = async (option: Record<string, string|undefined>) => {
     const result = userInputSchema.safeParse(option)
@@ -47,4 +48,4 @@ program
     .action(generate)
     .parse()
 
-export {CardEditor} from './domain/cardEditor.js'
+export {CardEditor} from './infrastructure/cardEditor.js'

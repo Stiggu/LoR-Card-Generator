@@ -1,6 +1,6 @@
 import { Jimp, loadFont, measureText, ResizeStrategy } from "jimp";
-import { CardDefinition, Image, MergeParameters } from "./cardDefinition.js";
-import { DEFAULT_FONT } from "../utils/paths.js";
+import { CardDefinition, Image, MergeParameters } from "../domain/cardDefinition.js";
+import { DEFAULT_FONT } from "../domain/utils/paths.js";
 
 export default class Name implements Image {
     buffer?: Buffer;

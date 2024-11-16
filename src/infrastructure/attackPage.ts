@@ -1,7 +1,7 @@
 import sharp from "sharp";
-import { CardDefinition, Image, MergeParameters } from "./cardDefinition.js";
-import { MASK } from "../utils/paths.js";
-import { ErrorMessage } from "../utils/errorHandler.js";
+import { CardDefinition, Image, MergeParameters } from "../domain/cardDefinition.js";
+import { MASK } from "../domain/utils/paths.js";
+import { ErrorMessage } from "../domain/utils/errorHandler.js";
 
 
 export class AttackPage implements Image {

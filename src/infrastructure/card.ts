@@ -1,6 +1,6 @@
 import { Jimp } from "jimp"
 import chalk from "chalk"
-import { Image } from "./cardDefinition.js"
+import { Image } from "../domain/cardDefinition.js"
 
 export class Card implements Image {
     images: Image[] = []

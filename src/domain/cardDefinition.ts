@@ -1,8 +1,9 @@
  
 import { BlendMode } from "jimp"
-import { ColorFilterMatch, Colors, colorSchema, Filters, filterSchema, validColors } from "../utils/utils.js"
-import { ErrorMessage } from "../utils/errorHandler.js"
+import { ErrorMessage } from "./utils/errorHandler.js"
 import { z } from "zod"
+import { ColorFilterMatch, colorSchema, validColors } from "./color.js"
+import { filterSchema } from "./filter.js"
 
 export interface ImageFilters {
     hue: number
