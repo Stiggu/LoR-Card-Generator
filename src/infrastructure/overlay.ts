@@ -4,7 +4,6 @@ import { CardDefinition } from "../domain/cardDefinition.js"
 import { Color } from "../domain/color.js"
 import { CardImage } from "../domain/cardImage.js"
 
-
 export class Overlay implements CardImage {
     color: Color
     buffer?: Buffer

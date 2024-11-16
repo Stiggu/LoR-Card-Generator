@@ -7,7 +7,6 @@ import { CardType } from "../domain/cardType.js";
 import { MergeParameters } from "../domain/mergeParameters.js";
 import { Filter } from "../domain/filter.js";
 
-
 export default class AttackType implements CardImage {
     color: Color
     filter: Filter

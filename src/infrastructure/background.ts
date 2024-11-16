@@ -5,7 +5,6 @@ import { CardImage } from "../domain/cardImage.js";
 import { Filter } from "../domain/filter.js";
 import { CardDefinition } from "../domain/cardDefinition.js";
 
-
 export class Background implements CardImage {
     filter: Filter
     buffer?: Buffer
