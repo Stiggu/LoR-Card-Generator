@@ -1,8 +1,10 @@
 import { Jimp, loadFont, measureText, ResizeStrategy } from "jimp";
-import { CardDefinition, Image, MergeParameters } from "../domain/cardDefinition.js";
 import { DEFAULT_FONT } from "../domain/utils/paths.js";
+import { MergeParameters } from "../domain/mergeParameters.js";
+import { CardDefinition } from "../domain/cardDefinition.js";
+import { CardImage } from "../domain/cardImage.js";
 
-export default class Name implements Image {
+export default class Name implements CardImage {
     buffer?: Buffer;
     merge: MergeParameters = {
         x: -50,

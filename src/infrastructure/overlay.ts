@@ -1,10 +1,11 @@
 import { BlendMode, Jimp } from "jimp"
-import { Color } from "../domain/utils/utils.js"
-import { CardDefinition, Image } from "../domain/cardDefinition.js"
 import { CARD_OVERLAY } from "../domain/utils/paths.js"
+import { CardDefinition } from "../domain/cardDefinition.js"
+import { Color } from "../domain/color.js"
+import { CardImage } from "../domain/cardImage.js"
 
 
-export class Overlay implements Image {
+export class Overlay implements CardImage {
     color: Color
     buffer?: Buffer
     merge = {

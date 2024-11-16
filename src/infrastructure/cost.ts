@@ -1,14 +1,17 @@
 import sharp from "sharp";
 import { Jimp } from "jimp";
-import { ImageFilters, MergeParameters, CardDefinition, Image } from "../domain/cardDefinition.js";
-import { Color } from "../domain/utils/utils.js";
 import { PATH } from "../domain/utils/paths.js";
+import { CardImage } from "../domain/cardImage.js";
+import { Color } from "../domain/color.js";
+import { MergeParameters } from "../domain/mergeParameters.js";
+import { CardDefinition } from "../domain/cardDefinition.js";
+import { Filter } from "../domain/filter.js";
 
 
-export default class Cost implements Image {
+export default class Cost implements CardImage {
     color: Color
     cost: number
-    filter: ImageFilters
+    filter: Filter
     width = 180
     length = 180
     buffer?: Buffer;
