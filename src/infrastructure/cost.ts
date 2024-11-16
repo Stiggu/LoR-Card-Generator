@@ -7,7 +7,6 @@ import { MergeParameters } from "../domain/mergeParameters.js";
 import { CardDefinition } from "../domain/cardDefinition.js";
 import { Filter } from "../domain/filter.js";
 
-
 export default class Cost implements CardImage {
     color: Color
     cost: number
