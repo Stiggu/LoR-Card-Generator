@@ -10,7 +10,7 @@
   "description": "Library of Ruina Card Generator",
   "main": "./dist/index.js",
   "bin": {
-    "lor-card": "dist/index.js"
+    "lor-card": "dist/infrastructure/cli.js"
   },
   "files": [
     "./assets",
