@@ -2,6 +2,12 @@
 
 All changes to the project will be documented here.
 
+## [Unreleased]
+
+### Added
+
+- Exporting utility functions
+
 ## [v1.1.0] - 2024-11-16
 
 ### Added
