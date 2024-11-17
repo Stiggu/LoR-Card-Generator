@@ -1,4 +1,4 @@
-import { MergeParameters } from "./mergeParameters.js"
+import { MergeParameters } from './mergeParameters.js'
 
 export interface CardImage {
     buffer?: Buffer
