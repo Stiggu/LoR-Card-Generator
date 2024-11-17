@@ -1,20 +1,17 @@
 {
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "always"
+        "source.fixAll.eslint": "always"
     },
     "eslint.validate": ["javascript"],
     "files.exclude": {
-      // "**/*.js": true
+        // "**/*.js": true
     },
     "editor.formatOnSave": true,
     "[markdown]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "cSpell.words": [
-      "colour",
-      "OBJETDART",
-      "Ruina",
-      "Ryoshu"
-    ]
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "cSpell.words": ["colour", "OBJETDART", "Ruina", "Ryoshu"]
 }
-  
