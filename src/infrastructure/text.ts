@@ -1,19 +1,19 @@
-import { Jimp, loadFont, measureText, ResizeStrategy } from "jimp";
-import { DEFAULT_FONT } from "../domain/utils/paths.js";
-import { MergeParameters } from "../domain/mergeParameters.js";
-import { CardDefinition } from "../domain/cardDefinition.js";
-import { CardImage } from "../domain/cardImage.js";
+import { Jimp, loadFont, measureText, ResizeStrategy } from 'jimp'
+import { DEFAULT_FONT } from '../domain/utils/paths.js'
+import { MergeParameters } from '../domain/mergeParameters.js'
+import { CardDefinition } from '../domain/cardDefinition.js'
+import { CardImage } from '../domain/cardImage.js'
 
 export default class Name implements CardImage {
-    buffer?: Buffer;
+    buffer?: Buffer
     merge: MergeParameters = {
         x: -50,
-        y: 95
+        y: 95,
     }
     title: string
 
-    constructor({name: title}: CardDefinition) {
-        this.title = title ?? "Placeholder"
+    constructor({ name: title }: CardDefinition) {
+        this.title = title ?? 'Placeholder'
     }
 
     create = async () => {
@@ -24,7 +24,7 @@ export default class Name implements CardImage {
         })
         const font = await loadFont(DEFAULT_FONT)
         const getTextPosition = () => {
-            return text.bitmap.width/2 - measureText(font, this.title)/2
+            return text.bitmap.width / 2 - measureText(font, this.title) / 2
         }
 
         this.buffer = await text
@@ -32,12 +32,12 @@ export default class Name implements CardImage {
                 text: this.title,
                 font: font,
                 x: getTextPosition(),
-                y: 0
+                y: 0,
             })
             .rotate({
                 deg: 12,
-                mode: ResizeStrategy.NEAREST_NEIGHBOR
+                mode: ResizeStrategy.NEAREST_NEIGHBOR,
             })
-            .getBuffer("image/png")
+            .getBuffer('image/png')
     }
 }

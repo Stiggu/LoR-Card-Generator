@@ -1,10 +1,10 @@
-import { BlendMode } from "jimp"
+import { BlendMode } from 'jimp'
 
 export interface MergeParameters {
     x: number
     y: number
     blend?: {
-        mode: BlendMode,
+        mode: BlendMode
         opacitySource: number
     }
 }

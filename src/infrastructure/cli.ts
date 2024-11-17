@@ -1,21 +1,24 @@
 #!/usr/bin/env node
 
-import { program } from "commander";
-import { CardEditor } from "./cardEditor.js";
-import { ErrorMessage } from "../domain/utils/errorHandler.js";
-import { Colors } from "../domain/color.js";
-import { Filters } from "../domain/filter.js";
-import { userInputSchema } from "../domain/userInput.js";
+import { program } from 'commander'
+import { CardEditor } from './cardEditor.js'
+import { ErrorMessage } from '../domain/utils/errorHandler.js'
+import { Colors } from '../domain/color.js'
+import { Filters } from '../domain/filter.js'
+import { userInputSchema } from '../domain/userInput.js'
 
-const generate = async (option: Record<string, string|undefined>) => {
-    const {data, error} = userInputSchema.safeParse(option)
+const generate = async (option: Record<string, string | undefined>) => {
+    const { data, error } = userInputSchema.safeParse(option)
 
-    if(error){
+    if (error) {
         console.table(error.issues)
-        throw new ErrorMessage('parser', 'The input provided is invalid, please review the table above!')
+        throw new ErrorMessage(
+            'parser',
+            'The input provided is invalid, please review the table above!',
+        )
     }
 
-    const {attacks, cost, name, range, type, image} = data
+    const { attacks, cost, name, range, type, image } = data
     const cardDefinition = {
         color: Colors[type],
         filter: Filters[type],
@@ -23,13 +26,13 @@ const generate = async (option: Record<string, string|undefined>) => {
         name,
         cost: cost,
         attack: range,
-        attacks: attacks
+        attacks: attacks,
     }
-    
+
     const cardEditor = new CardEditor(cardDefinition)
-    
+
     cardEditor.load()
-    
+
     await cardEditor.card.create()
     await cardEditor.card.save()
 }

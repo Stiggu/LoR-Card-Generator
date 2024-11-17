@@ -4,10 +4,10 @@ Small library to generate cards as if they were from Library of Ruina.
 
 ## How to use
 
-- Get NodeJs.
-- After creating a folder, run in a terminal.
-  - `npm i lor-card-generator`
-- Now you can use the CLI to generate cards!
+-   Get NodeJs.
+-   After creating a folder, run in a terminal.
+    -   `npm i lor-card-generator`
+-   Now you can use the CLI to generate cards!
 
 The CLI is accessed by using `lor-card` in the terminal. You have to pass in the following options:
 
@@ -22,7 +22,7 @@ The CLI is accessed by using `lor-card` in the terminal. You have to pass in the
 
 Example command:
 
-- `lor-card --image ./path/to/image.png --cost 1 --attacks blunt/slash/blunt --name TestCard --type limited --range mass`
+-   `lor-card --image ./path/to/image.png --cost 1 --attacks blunt/slash/blunt --name TestCard --type limited --range mass`
 
 ## Examples
 
@@ -32,10 +32,10 @@ Example command:
 
 ### Working on
 
-- Ability to pass in a `.json` file and generate a card from it.
-- Skill Effects / Damage / Die rolls.
-- Lose less quality when rotating icons.
+-   Ability to pass in a `.json` file and generate a card from it.
+-   Skill Effects / Damage / Die rolls.
+-   Lose less quality when rotating icons.
 
 ### Special thanks
 
-- Lunartique07, R.Anakova and CasualWatson for publishing a drive link with all the sprites from the game.
+-   Lunartique07, R.Anakova and CasualWatson for publishing a drive link with all the sprites from the game.
