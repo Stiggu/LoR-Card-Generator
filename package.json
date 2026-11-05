@@ -5,7 +5,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/stiggu/LoR-Card-Generator.git"
+        "url": "git+https://github.com/Stiggu/LoR-Card-Generator.git"
     },
     "description": "Library of Ruina Card Generator",
     "main": "./dist/index.js",
