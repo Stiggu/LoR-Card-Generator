@@ -1,10 +1,11 @@
-import chalk from 'chalk'
+type ErrorParameters = {
+    tag: string
+    message: string
+    cause?: Error
+}
 
 export class ErrorMessage extends Error {
-    constructor(tag: string, message: string) {
-        super(chalk.redBright(`[${tag.toUpperCase()}] ${message}`))
-
-        this.name = ''
-        this.stack = undefined
+    constructor({ tag, message, cause }: ErrorParameters) {
+        super(`[${tag.toUpperCase()}] ${message}`, { cause })
     }
 }

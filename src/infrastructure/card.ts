@@ -1,5 +1,4 @@
 import { Jimp } from 'jimp'
-import chalk from 'chalk'
 import { CardImage } from '../domain/cardImage.js'
 
 export class Card implements CardImage {
@@ -32,16 +31,5 @@ export class Card implements CardImage {
         }
 
         this.buffer = await base?.getBuffer('image/png')
-    }
-
-    save = async (name = 'output') => {
-        if (!this.buffer) {
-            console.log("Card couldn't be created because there was no buffer!")
-            return
-        }
-
-        const base = await Jimp.read(this.buffer)
-        base.write(`${name}.png`)
-        console.log(chalk.greenBright('Card has been created!'))
     }
 }

@@ -24,6 +24,32 @@ Example command:
 
 -   `lor-card --image ./path/to/image.png --cost 1 --attacks blunt/slash/blunt --name TestCard --type limited --range mass`
 
+The card is saved as `output.png` in the current folder.
+
+## Use as a library
+
+`createCard` returns the card as a PNG `Buffer`, so you decide what to do with it (save it, send it, etc.):
+
+```ts
+import { writeFile } from 'node:fs/promises'
+import { createCard } from 'lor-card-generator'
+
+const card = await createCard({
+    name: 'Bonk',
+    type: 'LIMITED',
+    range: 'melee',
+    cost: 3,
+    image: './images/krooming.jpg',
+    attacks: [{ name: 'blunt' }, { name: 'slash', counter: true }],
+})
+
+await writeFile('bonk.png', card)
+```
+
+-   `type` is uppercase: `PAPERBACK` `HARDCOVER` `LIMITED` `OBJETDART` `RED`.
+-   The input is validated at runtime and throws a `ZodError` if it's invalid. To check data yourself first (e.g. from a `.json` file), use the exported `cardInputSchema`.
+-   The package is ESM only.
+
 ## Examples
 
 | Ryoshu                             | Ishmael                               |

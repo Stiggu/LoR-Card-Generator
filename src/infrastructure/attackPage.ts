@@ -25,11 +25,11 @@ export class AttackPage implements CardImage {
         try {
             source = await sharp(this.image).png().resize(420, 350).toBuffer()
         } catch (e) {
-            console.error(e)
-            throw new ErrorMessage(
-                'attack page',
-                'Cannot find the image provided!',
-            )
+            throw new ErrorMessage({
+                tag: 'attack page',
+                message: 'Cannot read the image provided!',
+                cause: e instanceof Error ? e : undefined,
+            })
         }
 
         this.buffer = await sharp(source)
