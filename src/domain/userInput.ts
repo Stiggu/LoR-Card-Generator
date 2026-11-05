@@ -1,7 +1,7 @@
 import { z } from 'zod'
-import { attacksSchema } from './attackType.js'
+import { attacksSchema, attackTypeSchema } from './attackType.js'
 import { ErrorMessage } from './utils/errorHandler.js'
-import { colorsSchema, validColors } from './color.js'
+import { colorsSchema } from './color.js'
 import { cardTypeSchema } from './cardType.js'
 
 const convertAttackInputToType = (value: string) =>
@@ -11,7 +11,10 @@ const convertAttackInputToType = (value: string) =>
 
         const { data, error } = attacksSchema.safeParse(attackName)
 
-        if (error) throw new ErrorMessage('parser', 'Incorrect attack type!')
+        if (error) throw new ErrorMessage({
+            tag: 'parser',
+            message: 'Incorrect attack type!'
+        })
 
         return { name: data, counter: isCounter }
     })
@@ -20,7 +23,10 @@ const convertCostInput = (value: string) => {
     const parsedNumber = parseInt(value)
 
     if (isNaN(parsedNumber))
-        throw new ErrorMessage('parser', 'Cost should be a number!')
+        throw new ErrorMessage({
+            tag: 'parser',
+            message: 'Cost should be a number!'
+        })
 
     return parsedNumber
 }
@@ -30,11 +36,16 @@ export const userInputSchema = z.object({
     cost: z.string().transform(convertCostInput),
     name: z.string(),
     range: cardTypeSchema,
-    type: z
-        .string()
-        .transform((value) => colorsSchema.parse(value.toUpperCase()))
-        .refine((value) => validColors.includes(value), {
-            message: 'Invalid colour',
-        }),
+    type: z.string().toUpperCase().pipe(colorsSchema),
     image: z.string(),
 })
+
+export const cardInputSchema = z.object({
+    type: colorsSchema,
+    range: cardTypeSchema,
+    cost: z.number().int().min(0).max(9),
+    name: z.string(),
+    image: z.string(),
+    attacks: z.array(attackTypeSchema).max(5),
+})
+export type CardInput = z.infer<typeof cardInputSchema>

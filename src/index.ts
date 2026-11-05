@@ -1,6 +1,9 @@
-// Domain
-export { CardDefinition } from './domain/cardDefinition.js'
-export { hexToRgb } from './domain/utils/utils.js'
+// Application
+export { createCard } from './application/card.js'
 
-// Infrastructure
-export { CardEditor } from './infrastructure/cardEditor.js'
+// Domain
+export { cardInputSchema } from './domain/userInput.js'
+export type { CardInput } from './domain/userInput.js'
+export type { AttackType } from './domain/attackType.js'
+export type { CardType } from './domain/cardType.js'
+export type { ColorFilterMatch } from './domain/color.js'

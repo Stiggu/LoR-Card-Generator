@@ -1,6 +1,6 @@
 {
     "name": "lor-card-generator",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "author": "Stiggu",
     "license": "MIT",
     "repository": {
@@ -16,6 +16,13 @@
         "./assets",
         "./dist"
     ],
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        }
+    },
     "type": "module",
     "scripts": {
         "build": "tsc",
@@ -31,11 +38,11 @@
     "devDependencies": {
         "@eslint/js": "^9.11.1",
         "@types/eslint__js": "^8.42.3",
-        "@types/jimp": "^0.2.1",
+        "@types/node": "^24.19.2",
         "eslint": "^9.11.1",
         "prettier": "^3.3.3",
         "ts-node": "^10.9.2",
-        "typescript": "^5.6.2",
+        "typescript": "^6.0.0",
         "typescript-eslint": "^8.7.0"
     },
     "keywords": [

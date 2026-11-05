@@ -17,16 +17,19 @@ export default class AttackIcon implements CardImage {
 
     constructor({ attacks }: CardDefinition) {
         if (attacks.length > 5)
-            throw new ErrorMessage(
-                'attacks',
-                'Cards can only have 5 attack skills',
-            )
+            throw new ErrorMessage({
+                tag: 'attacks',
+                message: 'Cards can only have 5 attack skills',
+            })
 
         this.attacks = attacks
         this.merge.x -= (60 * this.attacks.length) / 2
     }
 
     create = async () => {
+        if (this.attacks.length === 0)
+            return
+
         const base = new Jimp({
             width: 70 * this.attacks.length,
             height: 200,
