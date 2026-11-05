@@ -11,7 +11,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
     "cSpell.words": ["colour", "OBJETDART", "Ruina", "Ryoshu"]
 }
